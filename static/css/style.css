@@ -1,0 +1,24 @@
+body {
+  background-color: #adb2d4;
+}
+
+.card-header {
+  background-color: #c7d9dd;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 26px;
+}
+
+.card-body {
+  background-color: #d5e5d5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.list-group-item {
+  background-color: #eef1da;
+}
+
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: gray;
+}
