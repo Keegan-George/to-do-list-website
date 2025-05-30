@@ -63,3 +63,5 @@ def create_app():
         db.session.delete(task_to_delete)
         db.session.commit()
         return redirect(url_for("home"))
+    
+    return app
