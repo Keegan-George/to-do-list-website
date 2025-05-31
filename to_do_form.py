@@ -6,7 +6,9 @@ from wtforms import StringField, DateField, SubmitField
 
 class ToDoForm(FlaskForm):
     date = DateField(
-        label="Date:", default=lambda: datetime.today().date(), validators=[InputRequired()]
+        label="Date:",
+        default=lambda: datetime.today().date(),
+        validators=[InputRequired()],
     )
     task = StringField(
         label="Task:",
