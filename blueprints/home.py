@@ -30,14 +30,14 @@ def add_task(date, task: str) -> None:
     """
     new_task = Task(title=task)
 
-    existing_todo_list: ToDoList = ToDoList.query.filter_by(date=date).first()
+    # query if the a todo list with that date exists
+    todo_list: ToDoList = ToDoList.query.filter_by(date=date).first()
 
-    if existing_todo_list:
-        existing_todo_list.tasks.append(new_task)
+    # if the list doesn't already exist create it
+    if not todo_list:
+        todo_list = ToDoList(date=date)
+        db.session.add(todo_list)
 
-    else:
-        new_todo_list = ToDoList(date=date)
-        new_todo_list.tasks.append(new_task)
-        db.session.add(new_todo_list)
+    todo_list.tasks.append(new_task)
 
     db.session.commit()
