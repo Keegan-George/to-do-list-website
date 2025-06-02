@@ -1,22 +1,24 @@
-from flask import Flask, render_template, redirect, url_for
-from to_do_form import ToDoForm
-from os import urandom
-from models import ToDoList, Task
 from extensions import db
+from os import getenv
+from dotenv import load_dotenv
+from to_do_form import ToDoForm
+from models import ToDoList, Task
+from flask import Flask, render_template, redirect, url_for
 
 
 def create_app():
     # create flask app
     app = Flask(__name__)
 
-    # configure the SQLite datbase, relative to the app instance folder
+    # configure the SQLite database, relative to the app instance folder
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///todo.db"
 
     # initialize the app with the extension
     db.init_app(app)
 
-    # secret key for csrf protection in flask form
-    app.config["SECRET_KEY"] = urandom(32)
+    # set secret key
+    load_dotenv()
+    app.config["SECRET_KEY"] = getenv("SECRET_KEY")
 
     # create table schema in database
     with app.app_context():
@@ -63,5 +65,5 @@ def create_app():
         db.session.delete(task_to_delete)
         db.session.commit()
         return redirect(url_for("home"))
-    
+
     return app
