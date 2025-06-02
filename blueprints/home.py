@@ -1,5 +1,6 @@
+from helper import add_task
 from to_do_form import ToDoForm
-from models import db, Task, ToDoList
+from models import db, ToDoList
 from flask import Blueprint, redirect, render_template, url_for
 
 
@@ -24,20 +25,3 @@ def home():
     return render_template("index.html", form=form, todo_lists=todo_lists)
 
 
-def add_task(date, task: str) -> None:
-    """
-    Add Task to a To-Do List. Create a new To-Do List if one doesn't already exist.
-    """
-    new_task = Task(title=task)
-
-    # query if the a todo list with that date exists
-    todo_list: ToDoList = ToDoList.query.filter_by(date=date).first()
-
-    # if the list doesn't already exist create it
-    if not todo_list:
-        todo_list = ToDoList(date=date)
-        db.session.add(todo_list)
-
-    todo_list.tasks.append(new_task)
-
-    db.session.commit()
