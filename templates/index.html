@@ -35,7 +35,7 @@
         <ul class="list-group">
           <li class="list-group-item">
             <label class="form-check">
-              <input class="form-check-input" type="checkbox" {% if task.complete %}complete{% endif %}/>
+              <input class="form-check-input" type="checkbox" {% if task.complete %}checked{% endif %}/>
               <span>{{task.title}}</span>
               |
               <a href="{{url_for('delete.delete_task', id=task.id)}}">
