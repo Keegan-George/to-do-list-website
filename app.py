@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from to_do_form import ToDoForm
 from models import ToDoList, Task
 from flask import Flask, render_template, redirect, url_for
-
+from blueprints.delete import delete_bp
 
 def create_app():
     # create flask app
@@ -51,19 +51,7 @@ def create_app():
             return redirect(url_for("home"))
 
         return render_template("index.html", form=form, todo_lists=todo_lists)
-
-    @app.route("/delete/todo_list/<int:id>")
-    def delete_todo_list(id):
-        list_to_delete = db.get_or_404(entity=ToDoList, ident=id)
-        db.session.delete(list_to_delete)
-        db.session.commit()
-        return redirect(url_for("home"))
-
-    @app.route("/delete/task/<int:id>")
-    def delete_task(id):
-        task_to_delete = db.get_or_404(entity=Task, ident=id)
-        db.session.delete(task_to_delete)
-        db.session.commit()
-        return redirect(url_for("home"))
+    
+    app.register_blueprint(delete_bp, url_prefix="/delete")
 
     return app
