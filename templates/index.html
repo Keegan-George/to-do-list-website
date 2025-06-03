@@ -39,7 +39,6 @@
               <input class="form-check-input" type="checkbox" name="{{task.id}}" value="True" {% if task.is_done %}checked{% endif %}/>
               <span>{{task.title}}</span>
               <input type="hidden" name="{{task.id}}" value="False">
-              <span>{{task.title}}</span>
               |
               <a href="{{url_for('delete.delete_task', id=task.id)}}">
                 <img src="{{url_for('static', filename='img/trash.svg')}}" /></a
