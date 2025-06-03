@@ -17,5 +17,5 @@ def update_task_completion():
 
     db.session.commit()
 
-    flash("Task statuses updated. ")
+    flash("Task statuses updated.")
     return redirect(url_for("home.home"))
