@@ -8,7 +8,7 @@ def add_task(date: date, task: str) -> None:
     Creates a new To-Do list if needed.
     """
     # check if a to-do list with the provided date exists
-    todo_list: ToDoList = ToDoList.query.filter_by(date=date).first_or_404()
+    todo_list: ToDoList = ToDoList.query.filter_by(date=date).first()
 
     # create a new to-do list if needed
     if not todo_list:
