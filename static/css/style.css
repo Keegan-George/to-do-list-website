@@ -4,6 +4,7 @@ body {
 
 .card {
   width: 45%;
+  margin: 15px 0
 }
 
 .card-header {
