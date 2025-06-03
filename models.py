@@ -17,6 +17,6 @@ class Task(db.Model):
     __tablename__ = "task_table"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String(50), nullable=False)
-    is_done: Mapped[bool] = mapped_column(Boolean)
+    is_done: Mapped[bool] = mapped_column(Boolean, default=False)
     todo_list_id: Mapped[int] = mapped_column(ForeignKey("todo_list_table.id"))
     todo_list: Mapped["ToDoList"] = relationship(back_populates="tasks")
