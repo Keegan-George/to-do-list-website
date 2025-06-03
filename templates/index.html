@@ -36,7 +36,7 @@
         <ul class="list-group">
           <li class="list-group-item">
             <label class="form-check">
-              <input class="form-check-input" type="checkbox" name="{{task.id}}" value="True" {% if task.complete %}checked{% endif %}/>
+              <input class="form-check-input" type="checkbox" name="{{task.id}}" value="True" {% if task.is_done %}checked{% endif %}/>
               <input type="hidden" name="{{task.id}}" value="False">
               <span>{{task.title}}</span>
               |
