@@ -19,7 +19,7 @@
     <form method="POST">
       {{form.csrf_token}}
       <p>{{form.date.label}} {{form.date()}}</p>
-      {{form.task.label}} {{form.task(autofocus=true)}} {{form.submit()}}
+      {{form.task.label}} {{form.task(autofocus=true)}} {{form.complete.label}} {{form.complete}} {{form.submit()}}
     </form>
 
     {% for todo_list in todo_lists %}
