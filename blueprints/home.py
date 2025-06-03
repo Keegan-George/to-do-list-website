@@ -17,8 +17,9 @@ def home():
     if form.validate_on_submit():
         date = form.date.data
         task = form.task.data
+        complete = form.complete.data
 
-        add_task(date, task)
+        add_task(date, task, complete)
 
         return redirect(url_for("home.home"))
 
