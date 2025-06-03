@@ -6,6 +6,9 @@ from blueprints.home import home_bp
 from blueprints.update import update_bp
 from blueprints.delete import delete_bp
 
+# retrieve environment variables
+load_dotenv()
+
 
 def create_app():
     # create flask app
@@ -18,7 +21,6 @@ def create_app():
     db.init_app(app)
 
     # set secret key
-    load_dotenv()
     app.config["SECRET_KEY"] = getenv("SECRET_KEY")
 
     # create table schema in database
