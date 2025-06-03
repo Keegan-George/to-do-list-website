@@ -19,9 +19,10 @@
     <form method="POST">
       {{form.csrf_token}}
       <p>{{form.date.label}} {{form.date()}}</p>
-      {{form.task.label}} {{form.task(autofocus=true)}} {{form.complete.label}} {{form.complete}} {{form.submit()}}
+      {{form.task.label}} {{form.task(autofocus=true)}} {{form.submit()}}
     </form>
 
+    <form action="{{url_for('update.update_task_completion')}}" method="POST">
     {% for todo_list in todo_lists %}
     <div class="card">
       <div class="card-header">
@@ -35,7 +36,8 @@
         <ul class="list-group">
           <li class="list-group-item">
             <label class="form-check">
-              <input class="form-check-input" type="checkbox" {% if task.complete %}checked{% endif %}/>
+              <input class="form-check-input" type="checkbox" name="{{task.id}}" value="True" {% if task.complete %}checked{% endif %}/>
+              <input type="hidden" name="{{task.id}}" value="False">
               <span>{{task.title}}</span>
               |
               <a href="{{url_for('delete.delete_task', id=task.id)}}">
@@ -47,6 +49,8 @@
       </div>
     </div>
     {% endfor %}
+    <input type="submit" value="Save">
+    </form>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
