@@ -2,11 +2,11 @@ from datetime import date
 from models import db, Task, ToDoList
 
 
-def add_task(date: date, task: str) -> None:
+def add_task(date: date, task: str, complete: bool) -> None:
     """
     Add Task to a To-Do List. Creates a new To-Do List if one doesn't already exist.
     """
-    new_task = Task(title=task, complete=False)
+    new_task = Task(title=task, complete=complete)
 
     # check if a to-do list with that date exists
     todo_list: ToDoList = ToDoList.query.filter_by(date=date).first()
