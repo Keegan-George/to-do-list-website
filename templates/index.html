@@ -37,6 +37,7 @@
           <li class="list-group-item">
             <label class="form-check">
               <input class="form-check-input" type="checkbox" name="{{task.id}}" value="True" {% if task.is_done %}checked{% endif %}/>
+              <span>{{task.title}}</span>
               <input type="hidden" name="{{task.id}}" value="False">
               <span>{{task.title}}</span>
               |
