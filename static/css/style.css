@@ -2,6 +2,10 @@ body {
   background-color: #adb2d4;
 }
 
+.card {
+  width: 45%;
+}
+
 .card-header {
   background-color: #c7d9dd;
   font-family: "Times New Roman", Times, serif;
