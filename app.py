@@ -2,8 +2,9 @@ from os import getenv
 from dotenv import load_dotenv
 from flask import Flask
 from extensions import db
-from blueprints.delete import delete_bp
 from blueprints.home import home_bp
+from blueprints.update import update_bp
+from blueprints.delete import delete_bp
 
 
 def create_app():
@@ -26,6 +27,7 @@ def create_app():
 
     # register blueprints
     app.register_blueprint(home_bp)
+    app.register_blueprint(update_bp, url_prefix="/update")
     app.register_blueprint(delete_bp, url_prefix="/delete")
 
     return app
