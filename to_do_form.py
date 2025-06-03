@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms.validators import InputRequired, Length
-from wtforms import StringField, DateField, BooleanField, SubmitField
+from wtforms import StringField, DateField, SubmitField
 
 
 class ToDoForm(FlaskForm):
@@ -14,5 +14,4 @@ class ToDoForm(FlaskForm):
         label="Task:",
         validators=[InputRequired(), Length(max=50)],
     )
-    complete = BooleanField(label="complete")
     submit = SubmitField(label="Add Task")
