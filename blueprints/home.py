@@ -22,5 +22,3 @@ def home():
         return redirect(url_for("home.home"))
 
     return render_template("index.html", form=form, todo_lists=todo_lists)
-
-

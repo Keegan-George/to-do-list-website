@@ -1,5 +1,6 @@
-from flask import Blueprint, redirect, url_for
 from models import db, Task, ToDoList
+from flask import Blueprint, redirect, url_for
+
 
 delete_bp = Blueprint("delete", __name__)
 

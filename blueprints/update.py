@@ -1,5 +1,5 @@
 from models import db, Task
-from flask import Blueprint, request, redirect, url_for, flash
+from flask import Blueprint, request, redirect, url_for
 
 
 update_bp = Blueprint("update", __name__)
